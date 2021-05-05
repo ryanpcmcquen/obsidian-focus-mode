@@ -10,6 +10,7 @@ export default class MyPlugin extends Plugin {
 				this.app.dom.appContainerEl ||
 				document.querySelector('.app-container');
 			const view_content = app_container.querySelector('.view-content');
+
 			const collapse_buttons = app_container.querySelectorAll(
 				'.workspace-ribbon-collapse-btn'
 			);
@@ -25,14 +26,7 @@ export default class MyPlugin extends Plugin {
 				}
 			});
 
-			if (app_container.style.visibility !== 'hidden') {
-				app_container.style.visibility = 'hidden';
-			} else {
-				app_container.style.visibility = 'visible';
-			}
-			view_content.style.visibility = 'visible';
-			// @ts-ignore
-			event.target.style.visibility = 'visible';
+			app_container.classList.toggle('focus_mode');
 		});
 	}
 
