@@ -4,6 +4,8 @@ Add Focus Mode to Obsidian.
 
 ![Focus Mode Demo](obsidian_focus_mode_demo_v2.gif)
 
+---
+
 ### Development
 
 Quick starting guide for new plugin devs:
