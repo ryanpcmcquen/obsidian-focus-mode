@@ -1,6 +1,6 @@
 import { Plugin } from 'obsidian';
 
-export default class MyPlugin extends Plugin {
+export default class FocusMode extends Plugin {
 	async onload() {
 		console.log('Loading Focus Mode plugin ...');
 
@@ -9,7 +9,6 @@ export default class MyPlugin extends Plugin {
 				// @ts-ignore
 				this.app.dom.appContainerEl ||
 				document.querySelector('.app-container');
-			const view_content = app_container.querySelector('.view-content');
 
 			const collapse_buttons = app_container.querySelectorAll(
 				'.workspace-ribbon-collapse-btn'
