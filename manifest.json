@@ -1,10 +1,10 @@
 {
-    "id": "obsidian_focus_mode",
+    "id": "obsidian-focus-mode",
     "name": "Focus Mode",
-    "version": "1.1.3",
+    "version": "1.2.0",
     "minAppVersion": "0.9.12",
     "description": "Add Focus Mode to Obsidian.",
     "author": "ryanpcmcquen",
-    "authorUrl": "https://github.com/ryanpcmcquen/obsidian_focus_mode",
+    "authorUrl": "https://github.com/ryanpcmcquen/obsidian-focus-mode",
     "isDesktopOnly": true
 }
