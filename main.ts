@@ -10,7 +10,7 @@ export default class FocusMode extends Plugin {
 				this.app.dom.appContainerEl ||
 				document.querySelector(".app-container");
 
-			app_container.classList.toggle("focus_mode");
+			app_container.classList.toggle("focus-mode");
 
 			// @ts-ignore
 			this.app.workspace.leftSplit.collapse();

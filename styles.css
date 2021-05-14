@@ -1,13 +1,13 @@
-.focus_mode .cm-s-obsidian div:not(.CodeMirror-activeline) > .CodeMirror-line {
+.focus-mode .cm-s-obsidian div:not(.CodeMirror-activeline) > .CodeMirror-line {
     opacity: 0.7;
     filter: saturate(0.7);
 }
 
-.app-container.focus_mode {
+.app-container.focus-mode {
     visibility: hidden;
 }
 
-.view-content,
-.side-dock-ribbon-action[aria-label='Toggle Focus Mode'] {
+.focus-mode .side-dock-ribbon-action[aria-label="Toggle Focus Mode"],
+.focus-mode .view-content {
     visibility: visible;
 }
