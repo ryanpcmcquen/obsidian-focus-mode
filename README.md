@@ -2,7 +2,7 @@
 
 Add Focus Mode to Obsidian.
 
-![Focus Mode Demo](obsidian-focus-mode-demo-v3.gif)
+![Focus Mode Demo](obsidian-super-focus-mode-demo-v2.gif)
 
 ---
 
