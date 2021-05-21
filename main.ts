@@ -20,7 +20,7 @@ export default class FocusMode extends Plugin {
             hotkeys: [
               {
                 modifiers: ["Mod", "Alt", "Shift"],
-                key: "f",
+                key: "F",
               },
             ],
           });
