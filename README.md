@@ -8,6 +8,13 @@ Now with _Super Focus_ mode (<kbd>Shift</kbd> + `Left Click`), which will only f
 
 ![Super Focus Mode and Command/Hotkey demo](https://raw.githubusercontent.com/ryanpcmcquen/obsidian-focus-mode/master/obsidian-command-focus-mode-demo-v1.gif)
 
+### Hotkeys
+
+| Hotkeys                                                                | Action                                     |
+| ---------------------------------------------------------------------- | ------------------------------------------ |
+| <kbd>Cmd/Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Z</kbd>                    | Toggle Focus Mode                          |
+| <kbd>Cmd/Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> | Toggle Super Focus Mode (Active pane only) |
+
 ---
 
 ### Manually installing the plugin
