@@ -1,35 +1,96 @@
 import { Plugin } from "obsidian";
 
 export default class FocusMode extends Plugin {
-    toggleFocusMode(superFocus?: boolean) {
-        if (
-            superFocus ||
-            // @ts-ignore
-            this.app.workspace.rootSplit.containerEl.hasClass("maximised")
-        ) {
-            // @ts-ignore
-            this.app.workspace.rootSplit.containerEl.toggleClass(
-                "maximised",
-                // @ts-ignore
-                !this.app.workspace.rootSplit.containerEl.hasClass("maximised")
-            );
-            // @ts-ignore
-            this.app.workspace.onLayoutChange();
-        }
+    focusModeActive = false;
 
-        if (superFocus && !document.body.classList.contains("focus-mode")) {
-            document.body.classList.add("focus-mode");
-        } else {
-            document.body.classList.toggle(
-                "focus-mode",
-                !document.body.classList.contains("focus-mode")
-            );
+    maximisedClass = "maximised";
+    focusModeClass = "focus-mode";
+
+    appContainer =
+        // @ts-ignore
+        this.app.dom.appContainerEl || document.querySelector(".app-container");
+
+    enableSuperFocusMode() {
+        // @ts-ignore
+        this.app.workspace.rootSplit.containerEl.toggleClass(
+            this.maximisedClass,
+            // @ts-ignore
+            !this.app.workspace.rootSplit.containerEl.hasClass(
+                this.maximisedClass
+            )
+        );
+
+        // @ts-ignore
+        this.app.workspace.onLayoutChange();
+
+        if (!this.appContainer.classList.contains(this.focusModeClass)) {
+            this.appContainer.classList.add(this.focusModeClass);
         }
 
         // @ts-ignore
         this.app.workspace.leftSplit.collapse();
         // @ts-ignore
         this.app.workspace.rightSplit.collapse();
+
+        this.focusModeActive = true;
+    }
+    enableFocusMode() {
+        if (
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.hasClass(
+                this.maximisedClass
+            )
+        ) {
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.removeClass(
+                this.maximisedClass
+            );
+            // @ts-ignore
+            this.app.workspace.onLayoutChange();
+        }
+
+        this.appContainer.classList.toggle(
+            this.focusModeClass,
+            !this.appContainer.classList.contains(this.focusModeClass)
+        );
+
+        // @ts-ignore
+        this.app.workspace.leftSplit.collapse();
+        // @ts-ignore
+        this.app.workspace.rightSplit.collapse();
+
+        this.focusModeActive = true;
+    }
+    disableFocusMode() {
+        if (
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.hasClass(
+                this.maximisedClass
+            )
+        ) {
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.removeClass(
+                this.maximisedClass
+            );
+            // @ts-ignore
+            this.app.workspace.onLayoutChange();
+        }
+
+        if (this.appContainer.classList.contains(this.focusModeClass)) {
+            this.appContainer.classList.remove(this.focusModeClass);
+        }
+
+        this.focusModeActive = false;
+    }
+
+    toggleFocusMode(superFocus: boolean = false) {
+        if (superFocus) {
+            this.enableSuperFocusMode();
+        } else if (this.focusModeActive) {
+            this.disableFocusMode();
+        } else {
+            this.enableFocusMode();
+        }
     }
 
     async onload() {
@@ -49,7 +110,7 @@ export default class FocusMode extends Plugin {
             callback: () => {
                 this.toggleFocusMode();
             },
-            hotkeys: [{ modifiers: ["Alt", "Mod"], key: "F" }],
+            hotkeys: [{ modifiers: ["Alt", "Mod"], key: "Z" }],
         });
 
         this.addCommand({
@@ -58,7 +119,7 @@ export default class FocusMode extends Plugin {
             callback: () => {
                 this.toggleFocusMode(true);
             },
-            hotkeys: [{ modifiers: ["Alt", "Mod", "Shift"], key: "F" }],
+            hotkeys: [{ modifiers: ["Alt", "Mod", "Shift"], key: "Z" }],
         });
     }
 
