@@ -6,12 +6,9 @@
     font-weight: calc(var(--editor-font-weight) + 100);
 }
 
-.focus-mode div.status-bar {
-    visibility: hidden;
-}
-
 .focus-mode div.view-header,
 .focus-mode div.workspace-ribbon,
+.focus-mode div.status-bar,
 .focus-mode .workspace-split.maximised .workspace-leaf:not(.mod-active),
 .focus-mode
     .workspace-split.maximised
