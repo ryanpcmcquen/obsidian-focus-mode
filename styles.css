@@ -2,11 +2,12 @@
     opacity: 0.8;
     filter: saturate(0.8);
 }
-
-.app-container.focus-mode {
-    visibility: hidden;
+.focus-mode .cm-s-obsidian div.CodeMirror-activeline > .CodeMirror-line {
+    font-weight: calc(var(--editor-font-weight) + 100);
 }
 
+.focus-mode div.view-header,
+.focus-mode div.status-bar,
 .focus-mode .workspace-split.maximised .workspace-leaf:not(.mod-active),
 .focus-mode
     .workspace-split.maximised
@@ -14,14 +15,23 @@
     ~ .workspace-split {
     display: none;
 }
+
+.focus-mode .view-content {
+    height: 100%;
+}
+
 .focus-mode .workspace-split.maximised .workspace-leaf.mod-active {
     /* 4px is for scrollbar width: */
     flex-basis: calc(100% - 4px);
 }
 
+.focus-mode div.workspace-ribbon {
+    visibility: hidden;
+  }
+.focus-mode div.workspace-ribbon:not(.mod-left) {
+    display: none;
+}
 .focus-mode
-    .side-dock-ribbon-action[aria-label="Toggle Focus Mode (Shift + Click to show active pane only)"],
-.focus-mode .view-content {
-    display: block;
+    .side-dock-ribbon-action[aria-label="Toggle Focus Mode (Shift + Click to show active pane only)"] {
     visibility: visible;
 }
