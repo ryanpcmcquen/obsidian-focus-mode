@@ -14,6 +14,11 @@
     ~ .workspace-split {
     display: none;
 }
+
+.focus-mode .view-content {
+    height: 100%;
+}
+
 .focus-mode .workspace-split.maximised .workspace-leaf.mod-active {
     /* 4px is for scrollbar width: */
     flex-basis: calc(100% - 4px);
