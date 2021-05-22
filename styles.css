@@ -3,7 +3,8 @@
     filter: saturate(0.8);
 }
 
-.app-container.focus-mode {
+.focus-mode div.status-bar,
+.focus-mode div.workspace-ribbon {
     visibility: hidden;
 }
 
@@ -27,8 +28,6 @@
 }
 
 .focus-mode
-    .side-dock-ribbon-action[aria-label="Toggle Focus Mode (Shift + Click to show active pane only)"],
-.focus-mode .view-content {
-    display: block;
+    .side-dock-ribbon-action[aria-label="Toggle Focus Mode (Shift + Click to show active pane only)"] {
     visibility: visible;
 }
