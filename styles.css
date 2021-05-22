@@ -2,6 +2,7 @@
     opacity: 0.8;
     filter: saturate(0.8);
 }
+
 .focus-mode .cm-s-obsidian div.CodeMirror-activeline > .CodeMirror-line {
     font-weight: calc(var(--editor-font-weight) + 100);
 }
@@ -27,10 +28,12 @@
 
 .focus-mode div.workspace-ribbon {
     visibility: hidden;
-  }
+}
+
 .focus-mode div.workspace-ribbon:not(.mod-left) {
     display: none;
 }
+
 .focus-mode
     .side-dock-ribbon-action[aria-label="Toggle Focus Mode (Shift + Click to show active pane only)"] {
     visibility: visible;
