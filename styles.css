@@ -7,7 +7,6 @@
 }
 
 .focus-mode div.view-header,
-.focus-mode div.workspace-ribbon,
 .focus-mode div.status-bar,
 .focus-mode .workspace-split.maximised .workspace-leaf:not(.mod-active),
 .focus-mode
@@ -26,12 +25,13 @@
     flex-basis: calc(100% - 4px);
 }
 
-.focus-mode div.workspace-ribbon.mod-left {
-    display: block;
-    position: absolute !important;
-}
-
-.focus-mode div.workspace-ribbon.mod-left > :not(.side-dock-actions),
-.focus-mode div.workspace-ribbon.mod-left .side-dock-ribbon-action:not([aria-label*="Toggle Focus Mode"]) {
+.focus-mode div.workspace-ribbon {
+    visibility: hidden;
+  }
+.focus-mode div.workspace-ribbon:not(.mod-left) {
     display: none;
+}
+.focus-mode
+    .side-dock-ribbon-action[aria-label="Toggle Focus Mode (Shift + Click to show active pane only)"] {
+    visibility: visible;
 }
