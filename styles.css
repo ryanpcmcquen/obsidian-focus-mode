@@ -7,6 +7,8 @@
     visibility: hidden;
 }
 
+.focus-mode div.view-header,
+.focus-mode div.workspace-ribbon:not(.mod-left),
 .focus-mode .workspace-split.maximised .workspace-leaf:not(.mod-active),
 .focus-mode
     .workspace-split.maximised
