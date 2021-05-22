@@ -2,6 +2,9 @@
     opacity: 0.8;
     filter: saturate(0.8);
 }
+.focus-mode .cm-s-obsidian div.CodeMirror-activeline > .CodeMirror-line {
+    font-weight: calc(var(--editor-font-weight) + 100);
+}
 
 .focus-mode div.status-bar {
     visibility: hidden;
