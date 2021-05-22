@@ -3,13 +3,12 @@
     filter: saturate(0.8);
 }
 
-.focus-mode div.status-bar,
-.focus-mode div.workspace-ribbon {
+.focus-mode div.status-bar {
     visibility: hidden;
 }
 
 .focus-mode div.view-header,
-.focus-mode div.workspace-ribbon:not(.mod-left),
+.focus-mode div.workspace-ribbon,
 .focus-mode .workspace-split.maximised .workspace-leaf:not(.mod-active),
 .focus-mode
     .workspace-split.maximised
@@ -27,7 +26,12 @@
     flex-basis: calc(100% - 4px);
 }
 
-.focus-mode
-    .side-dock-ribbon-action[aria-label="Toggle Focus Mode (Shift + Click to show active pane only)"] {
-    visibility: visible;
+.focus-mode div.workspace-ribbon.mod-left {
+    display: block;
+    position: absolute !important;
+}
+
+.focus-mode div.workspace-ribbon.mod-left > :not(.side-dock-actions),
+.focus-mode div.workspace-ribbon.mod-left .side-dock-ribbon-action:not([aria-label*="Toggle Focus Mode"]) {
+    display: none;
 }
