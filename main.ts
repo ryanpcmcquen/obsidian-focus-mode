@@ -6,10 +6,6 @@ export default class FocusMode extends Plugin {
     maximisedClass = "maximised";
     focusModeClass = "focus-mode";
 
-    appContainer =
-        // @ts-ignore
-        this.app.dom.appContainerEl || document.querySelector(".app-container");
-
     leftSplitCollapsed: boolean;
     rightSplitCollapsed: boolean;
 
@@ -52,8 +48,8 @@ export default class FocusMode extends Plugin {
         // @ts-ignore
         this.app.workspace.onLayoutChange();
 
-        if (!this.appContainer.classList.contains(this.focusModeClass)) {
-            this.appContainer.classList.add(this.focusModeClass);
+        if (!document.body.classList.contains(this.focusModeClass)) {
+            document.body.classList.add(this.focusModeClass);
         }
 
         this.collapseSplits();
@@ -75,9 +71,9 @@ export default class FocusMode extends Plugin {
             this.app.workspace.onLayoutChange();
         }
 
-        this.appContainer.classList.toggle(
+        document.body.classList.toggle(
             this.focusModeClass,
-            !this.appContainer.classList.contains(this.focusModeClass)
+            !document.body.classList.contains(this.focusModeClass)
         );
 
         this.storeSplitsValues();
@@ -101,8 +97,8 @@ export default class FocusMode extends Plugin {
             this.app.workspace.onLayoutChange();
         }
 
-        if (this.appContainer.classList.contains(this.focusModeClass)) {
-            this.appContainer.classList.remove(this.focusModeClass);
+        if (document.body.classList.contains(this.focusModeClass)) {
+            document.body.classList.remove(this.focusModeClass);
         }
 
         this.restoreSplits();
