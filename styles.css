@@ -38,3 +38,13 @@
     .side-dock-ribbon-action[aria-label="Toggle Focus Mode (Shift + Click to show active pane only)"] {
     visibility: visible;
 }
+
+.focus-mode.plugin-tabs .stayopen div.view-header {
+  display: none;
+}
+.focus-mode.plugin-tabs div.view-header {
+  display: flex;
+}
+.focus-mode.plugin-tabs div.view-actions {
+  display: none;
+}
