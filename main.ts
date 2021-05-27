@@ -6,6 +6,39 @@ export default class FocusMode extends Plugin {
     maximisedClass = "maximised";
     focusModeClass = "focus-mode";
 
+    appContainer =
+        // @ts-ignore
+        this.app.dom.appContainerEl || document.querySelector(".app-container");
+
+    leftSplitCollapsed: boolean;
+    rightSplitCollapsed: boolean;
+
+    storeSplitsValues() {
+        // @ts-ignore
+        this.leftSplitCollapsed = this.app.workspace.leftSplit.collapsed;
+        // @ts-ignore
+        this.rightSplitCollapsed = this.app.workspace.rightSplit.collapsed;
+    }
+
+    collapseSplits() {
+        // @ts-ignore
+        this.app.workspace.leftSplit.collapse();
+        // @ts-ignore
+        this.app.workspace.rightSplit.collapse();
+    }
+
+    restoreSplits() {
+        if (!this.leftSplitCollapsed) {
+            // @ts-ignore
+            this.app.workspace.leftSplit.expand();
+        }
+
+        if (!this.rightSplitCollapsed) {
+            // @ts-ignore
+            this.app.workspace.rightSplit.expand();
+        }
+    }
+
     enableSuperFocusMode() {
         // @ts-ignore
         this.app.workspace.rootSplit.containerEl.toggleClass(
@@ -19,14 +52,11 @@ export default class FocusMode extends Plugin {
         // @ts-ignore
         this.app.workspace.onLayoutChange();
 
-        if (!document.body.classList.contains(this.focusModeClass)) {
-            document.body.classList.add(this.focusModeClass);
+        if (!this.appContainer.classList.contains(this.focusModeClass)) {
+            this.appContainer.classList.add(this.focusModeClass);
         }
 
-        // @ts-ignore
-        this.app.workspace.leftSplit.collapse();
-        // @ts-ignore
-        this.app.workspace.rightSplit.collapse();
+        this.collapseSplits();
 
         this.focusModeActive = true;
     }
@@ -45,15 +75,14 @@ export default class FocusMode extends Plugin {
             this.app.workspace.onLayoutChange();
         }
 
-        document.body.classList.toggle(
+        this.appContainer.classList.toggle(
             this.focusModeClass,
-            !document.body.classList.contains(this.focusModeClass)
+            !this.appContainer.classList.contains(this.focusModeClass)
         );
 
-        // @ts-ignore
-        this.app.workspace.leftSplit.collapse();
-        // @ts-ignore
-        this.app.workspace.rightSplit.collapse();
+        this.storeSplitsValues();
+
+        this.collapseSplits();
 
         this.focusModeActive = true;
     }
@@ -72,9 +101,11 @@ export default class FocusMode extends Plugin {
             this.app.workspace.onLayoutChange();
         }
 
-        if (document.body.classList.contains(this.focusModeClass)) {
-            document.body.classList.remove(this.focusModeClass);
+        if (this.appContainer.classList.contains(this.focusModeClass)) {
+            this.appContainer.classList.remove(this.focusModeClass);
         }
+
+        this.restoreSplits();
 
         this.focusModeActive = false;
     }
