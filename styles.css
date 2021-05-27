@@ -39,12 +39,14 @@
     visibility: visible;
 }
 
+/* Thanks to @AidenLx! */
+/* Fixes for the Obsidian Tabs plugin: */
 .focus-mode.plugin-tabs .stayopen div.view-header {
-  display: none;
+    display: none;
 }
 .focus-mode.plugin-tabs div.view-header {
-  display: flex;
+    display: flex;
 }
 .focus-mode.plugin-tabs div.view-actions {
-  display: none;
+    display: none;
 }
