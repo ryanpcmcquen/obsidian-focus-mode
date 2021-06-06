@@ -1,4 +1,4 @@
-import { Plugin, Workspace, WorkspaceSidedock } from "obsidian";
+import { Plugin } from "obsidian";
 
 export default class FocusMode extends Plugin {
     focusModeActive = false;
@@ -10,32 +10,43 @@ export default class FocusMode extends Plugin {
     rightSplitCollapsed: boolean;
 
     storeSplitsValues() {
-        this.leftSplitCollapsed = Workspace.leftSplit.collapsed;
-        this.rightSplitCollapsed = Workspace.rightSplit.collapsed;
+        // @ts-ignore
+        this.leftSplitCollapsed = this.app.workspace.leftSplit.collapsed;
+        // @ts-ignore
+        this.rightSplitCollapsed = this.app.workspace.rightSplit.collapsed;
     }
 
     collapseSplits() {
-        Workspace.leftSplit.collapse();
-        Workspace.rightSplit.collapse();
+        // @ts-ignore
+        this.app.workspace.leftSplit.collapse();
+        // @ts-ignore
+        this.app.workspace.rightSplit.collapse();
     }
 
     restoreSplits() {
         if (!this.leftSplitCollapsed) {
-            Workspace.leftSplit.expand();
+            // @ts-ignore
+            this.app.workspace.leftSplit.expand();
         }
 
         if (!this.rightSplitCollapsed) {
-            Workspace.rightSplit.expand();
+            // @ts-ignore
+            this.app.workspace.rightSplit.expand();
         }
     }
 
     enableSuperFocusMode() {
-        Workspace.rootSplit.containerEl.toggleClass(
+        // @ts-ignore
+        this.app.workspace.rootSplit.containerEl.toggleClass(
             this.maximisedClass,
-            !Workspace.rootSplit.containerEl.hasClass(this.maximisedClass)
+            // @ts-ignore
+            !this.app.workspace.rootSplit.containerEl.hasClass(
+                this.maximisedClass
+            )
         );
 
-        Workspace.onLayoutChange();
+        // @ts-ignore
+        this.app.workspace.onLayoutChange();
 
         if (!document.body.classList.contains(this.focusModeClass)) {
             document.body.classList.add(this.focusModeClass);
@@ -46,9 +57,18 @@ export default class FocusMode extends Plugin {
         this.focusModeActive = true;
     }
     enableFocusMode() {
-        if (Workspace.rootSplit.containerEl.hasClass(this.maximisedClass)) {
-            Workspace.rootSplit.containerEl.removeClass(this.maximisedClass);
-            Workspace.onLayoutChange();
+        if (
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.hasClass(
+                this.maximisedClass
+            )
+        ) {
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.removeClass(
+                this.maximisedClass
+            );
+            // @ts-ignore
+            this.app.workspace.onLayoutChange();
         }
 
         document.body.classList.toggle(
@@ -63,9 +83,18 @@ export default class FocusMode extends Plugin {
         this.focusModeActive = true;
     }
     disableFocusMode() {
-        if (Workspace.rootSplit.containerEl.hasClass(this.maximisedClass)) {
-            Workspace.rootSplit.containerEl.removeClass(this.maximisedClass);
-            Workspace.onLayoutChange();
+        if (
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.hasClass(
+                this.maximisedClass
+            )
+        ) {
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.removeClass(
+                this.maximisedClass
+            );
+            // @ts-ignore
+            this.app.workspace.onLayoutChange();
         }
 
         if (document.body.classList.contains(this.focusModeClass)) {
