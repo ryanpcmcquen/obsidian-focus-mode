@@ -1,6 +1,6 @@
 .focus-mode .cm-s-obsidian div:not(.CodeMirror-activeline) > .CodeMirror-line {
-    opacity: 0.9;
-    filter: saturate(0.9);
+    opacity: 0.85;
+    filter: saturate(0.85);
 }
 
 .focus-mode div.view-header,
