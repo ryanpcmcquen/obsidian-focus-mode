@@ -17,6 +17,21 @@ Now with _Super Focus_ mode (<kbd>Shift</kbd> + `Left Click`), which will only f
 
 ---
 
-### Manually installing the plugin
+### Customizing the plugin's appearance:
+
+Classes are added to `document.body` depending on the state. `focus-mode` exists in Normal and Super Focus modes, while `super-focus-mode`, only exists in Super Focus Mode (surprise!).
+
+The following CSS snippet added to a vault will remove the opacity on non-active lines:
+
+```css
+.focus-mode .cm-s-obsidian div:not(.CodeMirror-activeline) > .CodeMirror-line {
+    opacity: 1 !important;
+    filter: saturate(1) !important;
+}
+```
+
+---
+
+### Manually installing the plugin:
 
 -   Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/obsidian-focus-mode/`.

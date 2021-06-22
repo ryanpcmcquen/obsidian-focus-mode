@@ -5,6 +5,7 @@ export default class FocusMode extends Plugin {
 
     maximisedClass = "maximised";
     focusModeClass = "focus-mode";
+    superFocusModeClass = "super-focus-mode";
 
     leftSplitCollapsed: boolean;
     rightSplitCollapsed: boolean;
@@ -35,6 +36,26 @@ export default class FocusMode extends Plugin {
         }
     }
 
+    removeExtraneousClasses() {
+        if (
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.hasClass(
+                this.maximisedClass
+            )
+        ) {
+            // @ts-ignore
+            this.app.workspace.rootSplit.containerEl.removeClass(
+                this.maximisedClass
+            );
+            // @ts-ignore
+            this.app.workspace.onLayoutChange();
+        }
+
+        if (document.body.classList.contains(this.superFocusModeClass)) {
+            document.body.classList.remove(this.superFocusModeClass);
+        }
+    }
+
     enableSuperFocusMode() {
         // @ts-ignore
         this.app.workspace.rootSplit.containerEl.toggleClass(
@@ -43,6 +64,11 @@ export default class FocusMode extends Plugin {
             !this.app.workspace.rootSplit.containerEl.hasClass(
                 this.maximisedClass
             )
+        );
+
+        document.body.classList.toggle(
+            this.superFocusModeClass,
+            !document.body.classList.contains(this.superFocusModeClass)
         );
 
         // @ts-ignore
@@ -57,19 +83,7 @@ export default class FocusMode extends Plugin {
         this.focusModeActive = true;
     }
     enableFocusMode() {
-        if (
-            // @ts-ignore
-            this.app.workspace.rootSplit.containerEl.hasClass(
-                this.maximisedClass
-            )
-        ) {
-            // @ts-ignore
-            this.app.workspace.rootSplit.containerEl.removeClass(
-                this.maximisedClass
-            );
-            // @ts-ignore
-            this.app.workspace.onLayoutChange();
-        }
+        this.removeExtraneousClasses();
 
         document.body.classList.toggle(
             this.focusModeClass,
@@ -83,19 +97,7 @@ export default class FocusMode extends Plugin {
         this.focusModeActive = true;
     }
     disableFocusMode() {
-        if (
-            // @ts-ignore
-            this.app.workspace.rootSplit.containerEl.hasClass(
-                this.maximisedClass
-            )
-        ) {
-            // @ts-ignore
-            this.app.workspace.rootSplit.containerEl.removeClass(
-                this.maximisedClass
-            );
-            // @ts-ignore
-            this.app.workspace.onLayoutChange();
-        }
+        this.removeExtraneousClasses();
 
         if (document.body.classList.contains(this.focusModeClass)) {
             document.body.classList.remove(this.focusModeClass);
