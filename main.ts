@@ -74,12 +74,14 @@ export default class FocusMode extends Plugin {
 
         // @ts-ignore
         this.app.on("active-leaf-change", () => {
-            // @ts-ignore
-            this.app.workspace.activeLeaf.view.editor.blur();
-            // @ts-ignore
-            this.app.workspace.activeLeaf.view.editor.focus();
-            // @ts-ignore
-            this.app.workspace.activeLeaf.view.editor.refresh();
+            try {
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.blur();
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.focus();
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.refresh();
+            } catch (ignore) {}
         });
 
         // @ts-ignore
@@ -103,12 +105,14 @@ export default class FocusMode extends Plugin {
 
         // @ts-ignore
         this.app.on("active-leaf-change", () => {
-            // @ts-ignore
-            this.app.workspace.activeLeaf.view.editor.blur();
-            // @ts-ignore
-            this.app.workspace.activeLeaf.view.editor.focus();
-            // @ts-ignore
-            this.app.workspace.activeLeaf.view.editor.refresh();
+            try {
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.blur();
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.focus();
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.refresh();
+            } catch (ignore) {}
         });
 
         this.storeSplitsValues();
