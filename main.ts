@@ -47,6 +47,7 @@ export default class FocusMode extends Plugin {
             this.app.workspace.rootSplit.containerEl.removeClass(
                 this.maximisedClass
             );
+
             // @ts-ignore
             this.app.workspace.onLayoutChange();
         }
@@ -72,6 +73,16 @@ export default class FocusMode extends Plugin {
         );
 
         // @ts-ignore
+        this.app.on("active-leaf-change", () => {
+            // @ts-ignore
+            this.app.workspace.activeLeaf.view.editor.blur();
+            // @ts-ignore
+            this.app.workspace.activeLeaf.view.editor.focus();
+            // @ts-ignore
+            this.app.workspace.activeLeaf.view.editor.refresh();
+        });
+
+        // @ts-ignore
         this.app.workspace.onLayoutChange();
 
         if (!document.body.classList.contains(this.focusModeClass)) {
@@ -89,6 +100,16 @@ export default class FocusMode extends Plugin {
             this.focusModeClass,
             !document.body.classList.contains(this.focusModeClass)
         );
+
+        // @ts-ignore
+        this.app.on("active-leaf-change", () => {
+            // @ts-ignore
+            this.app.workspace.activeLeaf.view.editor.blur();
+            // @ts-ignore
+            this.app.workspace.activeLeaf.view.editor.focus();
+            // @ts-ignore
+            this.app.workspace.activeLeaf.view.editor.refresh();
+        });
 
         this.storeSplitsValues();
 
