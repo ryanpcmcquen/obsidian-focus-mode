@@ -91,6 +91,8 @@ export default class FocusMode extends Plugin {
             document.body.classList.add(this.focusModeClass);
         }
 
+        this.storeSplitsValues();
+
         this.collapseSplits();
 
         this.focusModeActive = true;
