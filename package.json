@@ -1,6 +1,6 @@
 {
     "name": "obsidian-focus-mode",
-    "version": "1.10.1",
+    "version": "1.10.2",
     "description": "Add Focus Mode to Obsidian.",
     "main": "main.js",
     "scripts": {
@@ -15,7 +15,7 @@
         "@rollup/plugin-commonjs": "^18.0.0",
         "@rollup/plugin-node-resolve": "^11.2.1",
         "@rollup/plugin-typescript": "^8.3.3",
-        "@types/node": "^14.18.21",
+        "@types/node": "^14.18.33",
         "obsidian": "^0.15.1",
         "rollup": "^2.75.6",
         "tslib": "^2.4.0",
