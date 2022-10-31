@@ -1,3 +1,4 @@
+.focus-mode .cm-s-obsidian .cm-line:not(.cm-active),
 .focus-mode .cm-s-obsidian div:not(.CodeMirror-activeline) > .CodeMirror-line {
     opacity: 0.85;
     filter: saturate(0.85);
@@ -13,7 +14,8 @@
     .workspace-split.maximised
     .workspace-leaf.mod-active
     ~ .workspace-split,
-.focus-mode.plugin-tabs .stayopen .view-header {
+.focus-mode.plugin-tabs .stayopen .view-header,
+.super-focus-mode .workspace-tabs:not(.mod-active) {
     display: none;
 }
 
