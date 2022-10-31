@@ -24,6 +24,7 @@ Classes are added to `document.body` depending on the state. `focus-mode` exists
 The following CSS snippet added to a vault will remove the opacity on non-active lines:
 
 ```css
+.focus-mode .cm-s-obsidian .cm-line:not(.cm-active),
 .focus-mode .cm-s-obsidian div:not(.CodeMirror-activeline) > .CodeMirror-line {
     opacity: 1 !important;
     filter: saturate(1) !important;
