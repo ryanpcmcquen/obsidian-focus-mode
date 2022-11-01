@@ -21,12 +21,13 @@
 }
 
 .super-focus-mode .workspace-tab-header-container {
- padding-left: var(--size-4-8);
+    padding-left: var(--size-4-8);
 }
 
 .focus-mode .view-content {
     height: 100%;
 }
+
 .focus-mode .workspace-split.maximised .workspace-leaf.mod-active {
     /* 4px is for scrollbar width: */
     flex-basis: calc(100% - 4px);
