@@ -71,6 +71,28 @@ export default class FocusMode extends Plugin {
             this.superFocusModeClass,
             !document.body.classList.contains(this.superFocusModeClass)
         );
+        if (document.body.classList.contains(this.superFocusModeClass)) {
+            Array.from(
+                document.querySelectorAll(
+                    `.${this.superFocusModeClass} .workspace-split`
+                )
+            ).forEach((node) => {
+                const theNode = node as HTMLElement;
+                const hasActiveKids = theNode.querySelector(".mod-active");
+                if (hasActiveKids) {
+                    theNode.style.display = "flex";
+                } else {
+                    theNode.style.display = "none";
+                }
+            });
+        } else {
+            Array.from(document.querySelectorAll(".workspace-split")).forEach(
+                (node) => {
+                    const theNode = node as HTMLElement;
+                    theNode.style.display = "flex";
+                }
+            );
+        }
 
         // @ts-ignore
         this.app.on("active-leaf-change", () => {
@@ -81,20 +103,6 @@ export default class FocusMode extends Plugin {
                 this.app.workspace.activeLeaf.view.editor.focus();
                 // @ts-ignore
                 this.app.workspace.activeLeaf.view.editor.refresh();
-
-                Array.from(
-                    document.querySelectorAll(
-                        `.${this.superFocusModeClass} .workspace-split`
-                    )
-                ).forEach((node) => {
-                    const theNode = node as HTMLElement;
-                    const hasActiveKids = theNode.querySelector(".mod-active");
-                    if (hasActiveKids) {
-                        theNode.style.display = "flex";
-                    } else {
-                        theNode.style.display = "none";
-                    }
-                });
             } catch (ignore) {}
         });
 
