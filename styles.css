@@ -7,7 +7,7 @@
 .focus-mode .status-bar,
 .focus-mode .view-actions,
 .focus-mode .view-header-icon,
-.focus-mode .view-header-title,
+.focus-mode .inline-title,
 .focus-mode .workspace-ribbon:not(.mod-left),
 .focus-mode .workspace-split.maximised .workspace-leaf:not(.mod-active),
 .focus-mode
@@ -15,8 +15,7 @@
     .workspace-leaf.mod-active
     ~ .workspace-split,
 .focus-mode.plugin-tabs .stayopen .view-header,
-.super-focus-mode .workspace-tabs:not(.mod-active),
-.super-focus-mode .workspace-split .workspace-split .workspace-split {
+.super-focus-mode .workspace-tabs:not(.mod-active) {
     display: none;
 }
 

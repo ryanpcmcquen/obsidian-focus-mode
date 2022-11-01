@@ -81,6 +81,20 @@ export default class FocusMode extends Plugin {
                 this.app.workspace.activeLeaf.view.editor.focus();
                 // @ts-ignore
                 this.app.workspace.activeLeaf.view.editor.refresh();
+
+                Array.from(
+                    document.querySelectorAll(
+                        `.${this.superFocusModeClass} .workspace-split`
+                    )
+                ).forEach((node) => {
+                    const theNode = node as HTMLElement;
+                    const hasActiveKids = theNode.querySelector(".mod-active");
+                    if (hasActiveKids) {
+                        theNode.style.display = "flex";
+                    } else {
+                        theNode.style.display = "none";
+                    }
+                });
             } catch (ignore) {}
         });
 
