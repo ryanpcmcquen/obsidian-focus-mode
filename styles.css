@@ -15,14 +15,18 @@
     .workspace-leaf.mod-active
     ~ .workspace-split,
 .focus-mode.plugin-tabs .stayopen .view-header,
-.super-focus-mode .workspace-tabs:not(.mod-active) {
+.super-focus-mode .workspace-tabs:not(.mod-active),
+.super-focus-mode .workspace-split .workspace-split .workspace-split {
     display: none;
+}
+
+.super-focus-mode .workspace-tab-header-container {
+ padding-left: var(--size-4-8);
 }
 
 .focus-mode .view-content {
     height: 100%;
 }
-
 .focus-mode .workspace-split.maximised .workspace-leaf.mod-active {
     /* 4px is for scrollbar width: */
     flex-basis: calc(100% - 4px);
