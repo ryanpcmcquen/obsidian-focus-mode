@@ -57,7 +57,31 @@ export default class FocusMode extends Plugin {
         }
     }
 
+    sharedFocusModeCommands() {
+        this.focusModeActive = true;
+
+        // @ts-ignore
+        this.app.on("active-leaf-change", () => {
+            try {
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.blur();
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.focus();
+                // @ts-ignore
+                this.app.workspace.activeLeaf.view.editor.refresh();
+            } catch (ignore) {}
+        });
+
+        if (!document.body.classList.contains(this.focusModeClass)) {
+            this.storeSplitsValues();
+        }
+
+        this.collapseSplits();
+    }
+
     enableSuperFocusMode() {
+        this.sharedFocusModeCommands();
+
         // @ts-ignore
         this.app.workspace.rootSplit.containerEl.toggleClass(
             this.maximisedClass,
@@ -71,6 +95,11 @@ export default class FocusMode extends Plugin {
             this.superFocusModeClass,
             !document.body.classList.contains(this.superFocusModeClass)
         );
+
+        if (!document.body.classList.contains(this.focusModeClass)) {
+            document.body.classList.add(this.focusModeClass);
+        }
+
         if (document.body.classList.contains(this.superFocusModeClass)) {
             Array.from(
                 document.querySelectorAll(
@@ -85,66 +114,23 @@ export default class FocusMode extends Plugin {
                     theNode.style.display = "none";
                 }
             });
-        } else {
-            Array.from(document.querySelectorAll(".workspace-split")).forEach(
-                (node) => {
-                    const theNode = node as HTMLElement;
-                    theNode.style.display = "flex";
-                }
-            );
         }
-
-        // @ts-ignore
-        this.app.on("active-leaf-change", () => {
-            try {
-                // @ts-ignore
-                this.app.workspace.activeLeaf.view.editor.blur();
-                // @ts-ignore
-                this.app.workspace.activeLeaf.view.editor.focus();
-                // @ts-ignore
-                this.app.workspace.activeLeaf.view.editor.refresh();
-            } catch (ignore) {}
-        });
 
         // @ts-ignore
         this.app.workspace.onLayoutChange();
-
-        if (!document.body.classList.contains(this.focusModeClass)) {
-            document.body.classList.add(this.focusModeClass);
-        }
-
-        this.storeSplitsValues();
-
-        this.collapseSplits();
-
-        this.focusModeActive = true;
     }
+
     enableFocusMode() {
+        this.sharedFocusModeCommands();
+
         this.removeExtraneousClasses();
 
         document.body.classList.toggle(
             this.focusModeClass,
             !document.body.classList.contains(this.focusModeClass)
         );
-
-        // @ts-ignore
-        this.app.on("active-leaf-change", () => {
-            try {
-                // @ts-ignore
-                this.app.workspace.activeLeaf.view.editor.blur();
-                // @ts-ignore
-                this.app.workspace.activeLeaf.view.editor.focus();
-                // @ts-ignore
-                this.app.workspace.activeLeaf.view.editor.refresh();
-            } catch (ignore) {}
-        });
-
-        this.storeSplitsValues();
-
-        this.collapseSplits();
-
-        this.focusModeActive = true;
     }
+
     disableFocusMode() {
         this.removeExtraneousClasses();
 
@@ -153,6 +139,13 @@ export default class FocusMode extends Plugin {
         }
 
         this.restoreSplits();
+
+        Array.from(document.querySelectorAll(".workspace-split")).forEach(
+            (node) => {
+                const theNode = node as HTMLElement;
+                theNode.style.display = "flex";
+            }
+        );
 
         this.focusModeActive = false;
     }
