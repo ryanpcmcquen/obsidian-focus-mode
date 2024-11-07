@@ -6,5 +6,5 @@
     "description": "Add Focus Mode to Obsidian.",
     "author": "ryanpcmcquen",
     "authorUrl": "https://github.com/ryanpcmcquen",
-    "isDesktopOnly": true
+    "isDesktopOnly": false
 }
