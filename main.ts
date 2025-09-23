@@ -188,6 +188,26 @@ export default class FocusMode extends Plugin {
             },
             hotkeys: [{ modifiers: ["Alt", "Mod", "Shift"], key: "Z" }],
         });
+
+        this.addCommand({
+            id: "enable-focus-mode",
+            name: "Enable Focus Mode",
+            callback: () => {
+                if (!this.focusModeActive) {
+                    this.enableFocusMode();
+                }
+            },
+        });
+
+        this.addCommand({
+            id: "disable-focus-mode",
+            name: "Disable Focus Mode",
+            callback: () => {
+                if (this.focusModeActive) {
+                    this.disableFocusMode();
+                }
+            },
+        });
     }
 
     onunload() {
